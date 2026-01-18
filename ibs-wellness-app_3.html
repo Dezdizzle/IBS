@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBS Wellness - Dedicated to Edwin "Eddmust" Bäck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #8B9D83;
+            --sage-light: #A8B9A0;
+            --sage-dark: #6B7D63;
+            --cream: #F5F3EE;
+            --warm-white: #FDFCFA;
+            --terracotta: #C97C5D;
+            --terracotta-light: #E09B85;
+            --charcoal: #2C3531;
+            --soft-gray: #9CA3A0;
+            --success: #7BA05B;
+            --warning: #D4A574;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--warm-white) 100%);
+            color: var(--charcoal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+            color: var(--warm-white);
+            border-radius: 24px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .dedication {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.95;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .tab-btn {
+            padding: 15px 30px;
+            background: white;
+            border: 2px solid var(--sage-light);
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn:hover {
+            background: var(--sage-light);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 157, 131, 0.3);
+        }
+
+        .tab-btn.active {
+            background: var(--sage);
+            color: white;
+            border-color: var(--sage);
+            box-shadow: 0 6px 20px rgba(139, 157, 131, 0.4);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid rgba(139, 157, 131, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--sage-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: var(--sage-dark);
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .icon {
+            width: 32px;
+            height: 32px;
+            display: inline-block;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .food-card {
+            background: linear-gradient(135deg, var(--cream) 0%, white 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--success);
+            transition: all 0.3s ease;
+        }
+
+        .food-card.avoid {
+            border-left-color: var(--terracotta);
+            background: linear-gradient(135deg, #FFF5F0 0%, white 100%);
+        }
+
+        .food-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .food-card h4 {
+            color: var(--charcoal);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .food-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .food-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--charcoal);
+        }
+
+        .food-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .food-card.avoid .food-list li::before {
+            content: "✗";
+            color: var(--terracotta);
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, var(--sage-light) 0%, var(--sage) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(139, 157, 131, 0.25);
+        }
+
+        .tip-box h4 {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .strategy-list {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .strategy-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--terracotta);
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease-out backwards;
+        }
+
+        .strategy-item:nth-child(1) { animation-delay: 0.1s; }
+        .strategy-item:nth-child(2) { animation-delay: 0.2s; }
+        .strategy-item:nth-child(3) { animation-delay: 0.3s; }
+        .strategy-item:nth-child(4) { animation-delay: 0.4s; }
+        .strategy-item:nth-child(5) { animation-delay: 0.5s; }
+        .strategy-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .strategy-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .strategy-item strong {
+            color: var(--sage-dark);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .symptom-tracker {
+            background: var(--warm-white);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .symptom-input {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        input, select, textarea {
+            padding: 12px 18px;
+            border: 2px solid var(--sage-light);
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(139, 157, 131, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            background: var(--terracotta);
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(201, 124, 93, 0.3);
+        }
+
+        button:hover {
+            background: var(--terracotta-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 124, 93, 0.4);
+        }
+
+        .log-entry {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--warning);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .log-entry h4 {
+            color: var(--sage-dark);
+            margin-bottom: 8px;
+        }
+
+        .log-entry p {
+            margin: 5px 0;
+            color: var(--charcoal);
+        }
+
+        .severity {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .severity-low {
+            background: #D4EDD4;
+            color: var(--success);
+        }
+
+        .severity-medium {
+            background: #FFE8D4;
+            color: var(--warning);
+        }
+
+        .severity-high {
+            background: #FFD4D4;
+            color: var(--terracotta);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .resource-card {
+            background: linear-gradient(135deg, white 0%, var(--cream) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--sage);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .resource-card h4 {
+            color: var(--sage-dark);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            background: linear-gradient(135deg, var(--sage-dark) 0%, var(--sage) 100%);
+            color: var(--warm-white);
+            border-radius: 24px;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        footer p {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .quote {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--terracotta-light);
+        }
+
+        .emoji {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
+
+            .food-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>IBS Wellness Companion</h1>
+            <p class="dedication">Dedicated with love to Edwin "Eddmust" Bäck</p>
+            <p class="subtitle">Your personal guide to managing IBS and living well</p>
+            <p style="margin-top: 15px; font-size: 0.95rem; opacity: 0.9;">Created by Dezdizzle</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
+            <button class="tab-btn" onclick="showTab('diet')">Diet Guide</button>
+            <button class="tab-btn" onclick="showTab('coping')">Coping Strategies</button>
+            <button class="tab-btn" onclick="showTab('lifestyle')">Lifestyle Tips</button>
+            <button class="tab-btn" onclick="showTab('alternative')">Alternative Medicine</button>
+            <button class="tab-btn" onclick="showTab('tracker')">Symptom Tracker</button>
+            <button class="tab-btn" onclick="showTab('resources')">Resources</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="card">
+                <h2><span class="emoji">🌿</span> Understanding IBS</h2>
+                <p>Irritable Bowel Syndrome (IBS) is a common digestive disorder affecting the large intestine. While it can be challenging, with the right strategies and support, you can manage symptoms and improve your quality of life.</p>
+                
+                <h3>Common Symptoms</h3>
+                <div class="strategy-list">
+                    <div class="strategy-item">
+                        <strong>Abdominal Pain & Cramping</strong>
+                        Usually related to bowel movements and may improve after passing stool
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Bloating & Gas</strong>
+                        Feeling of fullness and visible distension of the abdomen
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Diarrhea or Constipation</strong>
+                        Some experience one or the other, while others alternate between both
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Changes in Bowel Habits</strong>
+                        Frequency, consistency, or appearance of stools may vary
+                    </div>
+                </div>
+
+                <div class="tip-box" style="margin-top: 30px;">
+                    <h4><span class="emoji">💡</span> Remember</h4>
+                    <p>You're not alone in this journey. Millions of people successfully manage IBS every day. This app is here to support you, just as Edwin "Eddmust" Bäck has inspired us to create tools that help.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diet Guide Tab -->
+        <div id="diet" class="tab-content">
+            <div class="card">
+                <h2><span class="emoji">🥗</span> Dietary Management</h2>
+                <p>Diet plays a crucial role in managing IBS symptoms. The Low FODMAP diet is often recommended as a starting point.</p>
+
+                <h3>Low FODMAP Foods (Generally Safe)</h3>
+                <div class="food-grid">
+                    <div class="food-card">
+                        <h4>🥬 Vegetables</h4>
+                        <ul class="food-list">
+                            <li>Carrots</li>
+                            <li>Cucumber</li>
+                            <li>Spinach</li>
+                            <li>Zucchini</li>
+                            <li>Bell peppers</li>
+                            <li>Eggplant</li>
+                        </ul>
+                    </div>
+                    <div class="food-card">
+                        <h4>🍓 Fruits</h4>
+                        <ul class="food-list">
+                            <li>Strawberries</li>
+                            <li>Blueberries</li>
+                            <li>Oranges</li>
+                            <li>Grapes</li>
+                            <li>Kiwi</li>
+                            <li>Pineapple</li>
+                        </ul>
+                    </div>
+                    <div class="food-card">
+                        <h4>🍖 Proteins</h4>
+                        <ul class="food-list">
+                            <li>Chicken</li>
+                            <li>Fish</li>
+                            <li>Eggs</li>
+                            <li>Tofu (firm)</li>
+                            <li>Turkey</li>
+                            <li>Lean beef</li>
+                        </ul>
+                    </div>
+                    <div class="food-card">
+                        <h4>🌾 Grains</h4>
+                        <ul class="food-list">
+                            <li>Rice</li>
+                            <li>Oats</li>
+                            <li>Quinoa</li>
+                            <li>Gluten-free bread</li>
+                            <li>Corn tortillas</li>
+                            <li>Sourdough (spelt)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">High FODMAP Foods (May Trigger Symptoms)</h3>
+                <div class="food-grid">
+                    <div class="food-card avoid">
+                        <h4>🧅 Vegetables to Limit</h4>
+                        <ul class="food-list">
+                            <li>Onions</li>
+                            <li>Garlic</li>
+                            <li>Cauliflower</li>
+                            <li>Mushrooms</li>
+                            <li>Asparagus</li>
+                            <li>Artichokes</li>
+                        </ul>
+                    </div>
+                    <div class="food-card avoid">
+                        <h4>🍎 Fruits to Limit</h4>
+                        <ul class="food-list">
+                            <li>Apples</li>
+                            <li>Pears</li>
+                            <li>Watermelon</li>
+                            <li>Mango</li>
+                            <li>Cherries</li>
+                            <li>Dried fruits</li>
+                        </ul>
+                    </div>
+                    <div class="food-card avoid">
+                        <h4>🥛 Dairy to Limit</h4>
+                        <ul class="food-list">
+                            <li>Milk</li>
+                            <li>Soft cheeses</li>
+                            <li>Ice cream</li>
+                            <li>Yogurt (regular)</li>
+                            <li>Cream</li>
+                        </ul>
+                    </div>
+                    <div class="food-card avoid">
+                        <h4>🫘 Others to Limit</h4>
+                        <ul class="food-list">
+                            <li>Beans & legumes</li>
+                            <li>Wheat products</li>
+                            <li>Honey</li>
+                            <li>High-fructose corn syrup</li>
+                            <li>Sugar alcohols</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tip-box" style="margin-top: 30px;">
+                    <h4><span class="emoji">⚠️</span> Important Note</h4>
+                    <p>Everyone's triggers are different. The Low FODMAP diet is meant to be followed in phases: elimination, reintroduction, and personalization. Work with a healthcare provider or registered dietitian for personalized guidance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coping Strategies Tab -->
+        <div id="coping" class="tab-content">
+            <div class="card">
+                <h2><span class="emoji">🧘‍♀️</span> Coping Strategies</h2>
+                <p>Managing IBS isn't just about diet—stress management and mental health play crucial roles.</p>
+
+                <div class="strategy-list">
+                    <div class="strategy-item">
+                        <strong>Practice Mindfulness & Meditation</strong>
+                        Even 5-10 minutes daily can help reduce stress and improve gut-brain connection. Apps like Headspace or Calm can guide you.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Deep Breathing Exercises</strong>
+                        Try the 4-7-8 technique: breathe in for 4 counts, hold for 7, exhale for 8. This activates your parasympathetic nervous system and calms digestion.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Progressive Muscle Relaxation</strong>
+                        Systematically tense and relax muscle groups to release physical tension that may worsen IBS symptoms.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Cognitive Behavioral Therapy (CBT)</strong>
+                        CBT specifically for IBS can help change thought patterns and reduce anxiety around symptoms.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Heat Therapy</strong>
+                        A heating pad on your abdomen can help relieve cramping and discomfort during flare-ups.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Keep a Support Network</strong>
+                        Connect with friends, family, or IBS support groups. Sharing experiences reduces isolation and provides practical tips.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Plan Ahead</strong>
+                        Know where bathrooms are located when going out. Having a plan reduces anxiety and helps you feel more in control.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Hypnotherapy for IBS</strong>
+                        Gut-directed hypnotherapy has shown significant benefits for many IBS patients in clinical studies.
+                    </div>
+                </div>
+
+                <div class="tip-box" style="margin-top: 30px;">
+                    <h4><span class="emoji">🌟</span> Quick Relief Techniques</h4>
+                    <p><strong>During a Flare-Up:</strong></p>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Lie down in a comfortable position</li>
+                        <li>Apply gentle heat to your abdomen</li>
+                        <li>Practice slow, deep breathing</li>
+                        <li>Sip peppermint or ginger tea</li>
+                        <li>Try gentle abdominal massage in a clockwise direction</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lifestyle Tips Tab -->
+        <div id="lifestyle" class="tab-content">
+            <div class="card">
+                <h2><span class="emoji">🌞</span> Lifestyle Improvements</h2>
+                <p>Small daily habits can make a significant difference in managing IBS symptoms.</p>
+
+                <h3>Daily Habits</h3>
+                <div class="strategy-list">
+                    <div class="strategy-item">
+                        <strong>Eat Regular, Smaller Meals</strong>
+                        Eating 5-6 smaller meals instead of 3 large ones can reduce digestive burden and prevent symptom spikes.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Eat Slowly & Mindfully</strong>
+                        Chew thoroughly and avoid rushing meals. This aids digestion and reduces gas and bloating.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Stay Hydrated</strong>
+                        Drink 6-8 glasses of water daily. Proper hydration is essential for digestive health, especially if you have diarrhea or constipation.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Regular Exercise</strong>
+                        Aim for 30 minutes of moderate activity most days. Walking, yoga, swimming, and cycling can all help regulate bowel function.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Prioritize Sleep</strong>
+                        Aim for 7-9 hours of quality sleep. Poor sleep can worsen IBS symptoms and increase stress levels.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Limit Caffeine & Alcohol</strong>
+                        Both can irritate the digestive system. If you do consume them, do so in moderation and track your response.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Manage Stress Proactively</strong>
+                        Don't wait for stress to build up. Schedule regular relaxation time, hobbies, and activities you enjoy.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Consider Probiotics</strong>
+                        Certain probiotic strains may help balance gut bacteria. Consult your doctor about which might be right for you.
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">Work & Social Life</h3>
+                <div class="strategy-list">
+                    <div class="strategy-item">
+                        <strong>Communicate When Comfortable</strong>
+                        You don't owe everyone an explanation, but trusted colleagues and friends can provide valuable support when they understand your needs.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Pack Safe Snacks</strong>
+                        Always have IBS-friendly snacks on hand for work, travel, or social events where food options may be limited.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Research Restaurants Ahead</strong>
+                        Check menus online before dining out. Many restaurants are happy to accommodate dietary needs if you call ahead.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Don't Skip Meals</strong>
+                        Skipping meals can disrupt your digestive rhythm and worsen symptoms. Keep your eating schedule consistent.
+                    </div>
+                </div>
+
+                <div class="quote">
+                    <p style="font-family: 'Crimson Pro', serif; font-size: 1.1rem; font-style: italic;">
+                        "Living with IBS requires patience and self-compassion. Every small step you take toward better health is a victory worth celebrating."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alternative Medicine Tab -->
+        <div id="alternative" class="tab-content">
+            <div class="card">
+                <h2><span class="emoji">🌿</span> Alternative Medicine Treatments</h2>
+                <p>Many people with IBS explore complementary and alternative treatments alongside conventional medicine. While research is ongoing, some approaches show promising results for symptom management.</p>
+
+                <div class="tip-box" style="margin-top: 20px;">
+                    <h4><span class="emoji">⚠️</span> Important Disclaimer</h4>
+                    <p>Always consult with your healthcare provider before starting any alternative treatments, especially peptides or supplements. These therapies should complement, not replace, medical advice and treatment.</p>
+                </div>
+
+                <h3>BPC-157 Peptide Therapy</h3>
+                <p><strong>BPC-157 (Body Protection Compound-157)</strong> is a synthetic peptide derived from a protein found in human gastric juice. It has gained attention in the health community for its potential healing properties.</p>
+
+                <div class="strategy-list">
+                    <div class="strategy-item">
+                        <strong>Gut Healing Properties</strong>
+                        Research suggests BPC-157 may promote healing of the intestinal lining, which can be beneficial for IBS patients with increased intestinal permeability ("leaky gut").
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Anti-Inflammatory Effects</strong>
+                        BPC-157 has shown potential anti-inflammatory properties that may help reduce gut inflammation, a key factor in IBS symptoms.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Improved Gut Motility</strong>
+                        Some studies indicate BPC-157 may help regulate digestive tract movement, potentially helping with both IBS-D (diarrhea) and IBS-C (constipation).
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Protection Against Damage</strong>
+                        The peptide may help protect the GI tract from damage caused by NSAIDs, alcohol, and stress-related factors.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Enhanced Blood Flow</strong>
+                        BPC-157 may promote angiogenesis (formation of new blood vessels), improving blood flow to damaged tissues in the digestive system.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Gut-Brain Axis Support</strong>
+                        Emerging research suggests BPC-157 may influence the gut-brain axis, potentially helping with IBS-related anxiety and stress.
+                    </div>
+                </div>
+
+                <div class="tip-box" style="margin-top: 30px; background: linear-gradient(135deg, var(--warning) 0%, #D4A574 100%);">
+                    <h4><span class="emoji">📋</span> Research Status</h4>
+                    <p>While BPC-157 shows promise in animal studies and anecdotal reports, human clinical trials are limited. It is not FDA-approved for IBS treatment and is typically obtained through research peptide suppliers. Dosing, safety, and long-term effects in humans require more research.</p>
+                </div>
+
+                <h3 style="margin-top: 40px;">Other Alternative Treatments for IBS</h3>
+                
+                <div class="food-grid">
+                    <div class="food-card">
+                        <h4>🌱 Herbal Remedies</h4>
+                        <ul class="food-list">
+                            <li>Peppermint oil (enteric-coated)</li>
+                            <li>Ginger for nausea and cramping</li>
+                            <li>Turmeric (curcumin) for inflammation</li>
+                            <li>Chamomile tea for relaxation</li>
+                            <li>Fennel for bloating and gas</li>
+                        </ul>
+                    </div>
+
+                    <div class="food-card">
+                        <h4>💊 Supplements</h4>
+                        <ul class="food-list">
+                            <li>Probiotics (specific strains)</li>
+                            <li>L-Glutamine for gut lining</li>
+                            <li>Digestive enzymes</li>
+                            <li>Psyllium husk (for constipation)</li>
+                            <li>Magnesium citrate</li>
+                        </ul>
+                    </div>
+
+                    <div class="food-card">
+                        <h4>🧘 Mind-Body Therapies</h4>
+                        <ul class="food-list">
+                            <li>Acupuncture</li>
+                            <li>Gut-directed hypnotherapy</li>
+                            <li>Yoga and tai chi</li>
+                            <li>Meditation and mindfulness</li>
+                            <li>Biofeedback</li>
+                        </ul>
+                    </div>
+
+                    <div class="food-card">
+                        <h4>🌊 Other Approaches</h4>
+                        <ul class="food-list">
+                            <li>Colostrum supplements</li>
+                            <li>Bone broth for gut healing</li>
+                            <li>Aloe vera juice</li>
+                            <li>Apple cider vinegar (diluted)</li>
+                            <li>Slippery elm bark</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">Peptide Therapy Considerations</h3>
+                <div class="strategy-list">
+                    <div class="strategy-item">
+                        <strong>Quality Matters</strong>
+                        If considering peptide therapy, source from reputable suppliers with third-party testing. Purity and quality vary significantly.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Administration Methods</strong>
+                        BPC-157 is typically administered via subcutaneous injection or oral capsules. Injection may be more effective but requires proper technique.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Dosing Protocols</strong>
+                        Common dosing ranges from 250-500 mcg once or twice daily, but optimal dosing for IBS is not established. Work with a knowledgeable practitioner.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Cycling</strong>
+                        Many users cycle BPC-157 (e.g., 4-6 weeks on, then a break) rather than using it continuously. Long-term safety data is limited.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Monitoring</strong>
+                        Track your symptoms carefully when starting any new therapy. Keep a detailed journal of changes, both positive and negative.
+                    </div>
+                    <div class="strategy-item">
+                        <strong>Cost Considerations</strong>
+                        Peptide therapy can be expensive and is rarely covered by insurance. Budget for ongoing costs if pursuing this treatment.
+                    </div>
+                </div>
+
+                <div class="quote">
+                    <p style="font-family: 'Crimson Pro', serif; font-size: 1.1rem; font-style: italic;">
+                        "Alternative medicine can be a valuable complement to conventional treatment, but it works best as part of a comprehensive approach that includes diet, stress management, and medical supervision."
+                    </p>
+                </div>
+
+                <div class="tip-box" style="margin-top: 30px; background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-light) 100%);">
+                    <h4><span class="emoji">🔬</span> Stay Informed</h4>
+                    <p>The field of peptide therapy is rapidly evolving. Stay updated on new research through reputable sources like PubMed, and discuss findings with healthcare providers who are knowledgeable about both conventional and alternative approaches to IBS.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Symptom Tracker Tab -->
+        <div id="tracker" class="tab-content">
+            <div class="card">
+                <h2><span class="emoji">📊</span> Symptom Tracker</h2>
+                <p>Tracking your symptoms helps identify patterns and triggers. Record your daily experiences to share with your healthcare provider.</p>
+
+                <div class="symptom-tracker">
+                    <div class="symptom-input">
+                        <input type="date" id="log-date" />
+                        <select id="symptom-type">
+                            <option value="">Select Symptom</option>
+                            <option value="Abdominal Pain">Abdominal Pain</option>
+                            <option value="Bloating">Bloating</option>
+                            <option value="Diarrhea">Diarrhea</option>
+                            <option value="Constipation">Constipation</option>
+                            <option value="Gas">Gas</option>
+                            <option value="Nausea">Nausea</option>
+                            <option value="Fatigue">Fatigue</option>
+                        </select>
+                        <select id="severity">
+                            <option value="">Severity</option>
+                            <option value="low">Mild</option>
+                            <option value="medium">Moderate</option>
+                            <option value="high">Severe</option>
+                        </select>
+                    </div>
+                    <textarea id="food-consumed" placeholder="Foods consumed today..."></textarea>
+                    <textarea id="notes" placeholder="Additional notes (stress level, activities, sleep quality, etc.)..."></textarea>
+                    <button onclick="addLog()">Add Log Entry</button>
+                </div>
+
+                <div id="log-container" style="margin-top: 30px;">
+                    <h3>Recent Entries</h3>
+                    <div id="logs"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Tab -->
+        <div id="resources" class="tab-content">
+            <div class="card">
+                <h2><span class="emoji">📚</span> Helpful Resources</h2>
+                <p>Additional tools and information to support your IBS management journey.</p>
+
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h4>🏥 Medical Support</h4>
+                        <p><strong>Gastroenterologist:</strong> Specialist in digestive disorders who can provide diagnosis and treatment plans.</p>
+                        <p style="margin-top: 10px;"><strong>Registered Dietitian:</strong> Can create personalized meal plans and guide you through the Low FODMAP diet.</p>
+                    </div>
+
+                    <div class="resource-card">
+                        <h4>📱 Helpful Apps</h4>
+                        <p><strong>Monash FODMAP:</strong> Official Low FODMAP diet app with food guide and recipes.</p>
+                        <p style="margin-top: 10px;"><strong>Cara Care:</strong> IBS symptom tracker and personalized insights.</p>
+                        <p style="margin-top: 10px;"><strong>Bowelle:</strong> Comprehensive IBS management and tracking.</p>
+                    </div>
+
+                    <div class="resource-card">
+                        <h4>🌐 Online Communities</h4>
+                        <p><strong>IBS Support Groups:</strong> Connect with others who understand your journey on platforms like Reddit (r/IBS), Facebook groups, and patient forums.</p>
+                        <p style="margin-top: 10px;"><strong>Local Support Groups:</strong> Check with your healthcare provider for in-person meetings.</p>
+                    </div>
+
+                    <div class="resource-card">
+                        <h4>📖 Educational Resources</h4>
+                        <p><strong>IBS Organizations:</strong> The International Foundation for Gastrointestinal Disorders (IFFGD) and Rome Foundation offer evidence-based information.</p>
+                        <p style="margin-top: 10px;"><strong>Books:</strong> "The Complete Low-FODMAP Diet" and "The IBS Elimination Diet and Cookbook"</p>
+                    </div>
+
+                    <div class="resource-card">
+                        <h4>🧘 Mind-Body Resources</h4>
+                        <p><strong>Meditation Apps:</strong> Headspace, Calm, and Insight Timer offer guided meditations for stress and digestion.</p>
+                        <p style="margin-top: 10px;"><strong>Yoga:</strong> Gentle yoga specifically designed for digestive health can be very beneficial.</p>
+                    </div>
+
+                    <div class="resource-card">
+                        <h4>⚡ Emergency Contacts</h4>
+                        <p><strong>When to Seek Help:</strong> Contact your doctor if you experience severe pain, blood in stool, unexplained weight loss, or persistent vomiting.</p>
+                        <p style="margin-top: 10px;"><strong>Keep a list:</strong> Save your gastroenterologist's contact information in your phone.</p>
+                    </div>
+                </div>
+
+                <div class="tip-box" style="margin-top: 30px;">
+                    <h4><span class="emoji">💪</span> You're Stronger Than You Think</h4>
+                    <p>Managing IBS is a journey, not a destination. Be patient with yourself, celebrate small victories, and remember that better days are ahead. You have the strength to live well with IBS.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>"This application is dedicated to Edwin 'Eddmust' Bäck"</p>
+            <p style="margin-top: 15px; font-size: 0.95rem; opacity: 0.9;">May this tool bring comfort, understanding, and hope to all who navigate life with IBS.</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.85;">Remember: You are not your illness. You are resilient, capable, and worthy of support and care.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Symptom tracker functionality
+        function addLog() {
+            const date = document.getElementById('log-date').value;
+            const symptom = document.getElementById('symptom-type').value;
+            const severity = document.getElementById('severity').value;
+            const foods = document.getElementById('food-consumed').value;
+            const notes = document.getElementById('notes').value;
+
+            if (!date || !symptom || !severity) {
+                alert('Please fill in date, symptom type, and severity.');
+                return;
+            }
+
+            const logsContainer = document.getElementById('logs');
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            
+            const severityClass = `severity-${severity}`;
+            const severityText = severity === 'low' ? 'Mild' : severity === 'medium' ? 'Moderate' : 'Severe';
+            
+            logEntry.innerHTML = `
+                <h4>${symptom} <span class="severity ${severityClass}">${severityText}</span></h4>
+                <p><strong>Date:</strong> ${new Date(date).toLocaleDateString()}</p>
+                ${foods ? `<p><strong>Foods:</strong> ${foods}</p>` : ''}
+                ${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ''}
+            `;
+            
+            logsContainer.insertBefore(logEntry, logsContainer.firstChild);
+            
+            // Clear form
+            document.getElementById('log-date').value = '';
+            document.getElementById('symptom-type').value = '';
+            document.getElementById('severity').value = '';
+            document.getElementById('food-consumed').value = '';
+            document.getElementById('notes').value = '';
+        }
+
+        // Set today's date as default
+        document.getElementById('log-date').valueAsDate = new Date();
+    </script>
+</body>
+</html>
